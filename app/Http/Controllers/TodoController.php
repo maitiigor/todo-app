@@ -71,7 +71,7 @@ class TodoController extends Controller
     public function show($id)
     {
         //
-        $todoId = $request->route('id');
+        $todoId = $id;
 
         return response()->json([
             'data' => $this->todoRepository->getTodorById($todoId)
@@ -87,7 +87,7 @@ class TodoController extends Controller
     public function edit($id)
     {
         //
-        $todoId = $request->route('id');
+        $todoId = $id;
 
         return response()->json([
             'data' => $this->todoRepository->getTodoById($todoId)
@@ -105,10 +105,7 @@ class TodoController extends Controller
     {
         //
         $todoId = $id;
-        $todoDetails = $request->only([
-            'client',
-            'details'
-        ]);
+        $todoDetails = $request->all();
 
         return response()->json([
             'data' => $this->todoRepository->update($todoId, $todoDetails)
@@ -124,7 +121,7 @@ class TodoController extends Controller
     public function destroy($id)
     {
         //
-        $todoId = $request->route('id');
+        $todoId = $id;
         $this->todoRepository->deletetodo($todoId);
 
         return response()->json(null, Response::HTTP_NO_CONTENT);
