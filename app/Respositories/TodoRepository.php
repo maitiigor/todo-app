@@ -24,16 +24,13 @@ class TodoRepository implements TodoRepositoryInterface
 
     public function createOrder(array $todoDetails) 
     {
-        return Todo::create($todorDetails);
+        return Todo::create($todoDetails);
     }
 
-    public function updateOrder($orderId, array $newDetails) 
+    public function updateOrder($todoId, array $newDetails) 
     {
-        return Order::whereId($orderId)->update($newDetails);
+        return Todo::whereId($todoId)->update($newDetails);
     }
 
-    public function getFulfilledOrders() 
-    {
-        return Order::where('is_fulfilled', true);
-    }
+  
 }
