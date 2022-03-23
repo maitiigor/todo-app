@@ -22,12 +22,12 @@ class TodoRepository implements TodoRepositoryInterface
         Todo::destroy($todoId);
     }
 
-    public function createOrder(array $todoDetails) 
+    public function createTodo(array $todoDetails) 
     {
         return Todo::create($todoDetails);
     }
 
-    public function updateOrder($todoId, array $newDetails) 
+    public function updateTodo($todoId, array $newDetails) 
     {
         return Todo::whereId($todoId)->update($newDetails);
     }
